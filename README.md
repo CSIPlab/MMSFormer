@@ -1,6 +1,6 @@
 <div align="center"> 
 
-## MMSFormer: Multimodal Material Segmentation with Multimodal Segmentation Transformer
+## MMSFormer: Multimodal Transformer for Material Segmentation
 
 </div>
 
@@ -19,20 +19,20 @@
 
 ## Introduction
 
-Leveraging information across diverse modalities is known to enhance performance on segmentation tasks. However, effectively fusing information from different modalities remains challenging due to the unique characteristics of each modality. In this paper, we propose a novel fusion strategy that can effectively fuse information from four different modalities: RGB, AoLP, DoLP and NIR. We also propose a new model named **M**ulti-**M**odal **S**egmentation Trans**Former** **(MMSFormer)** that incorporates the proposed fusion strategy to perform multimodal material segmentation task. MMSFormer achieves **52.05\% mIoU** outperforming the current state-of-the-art by 0.51\% on MCubeS dataset. Starting from RGB-only, performance gradually increases as we add new modalities. It shows significant improvement in detecting **gravel (+10.4\%)** and **human(+9.1\%)** classes. Ablation studies show that different modules in the fusion block are crucial for overall model performance. Our code and pretrained models are publicly available for reference. 
+Leveraging information across diverse modalities is known to enhance performance on multimodal segmentation tasks. However, effectively fusing information from different modalities remains challenging due to the unique characteristics of each modality. In this paper, we propose a novel fusion strategy that can effectively fuse information from different combinations of four different modalities: RGB, Angle of Linear Polarization (AoLP), Degree of Linear Polarization (DoLP) and Near-Infrared (NIR). We also propose a new model named **M**ulti-**M**odal **S**egmentation Trans**Former** **(MMSFormer)** that incorporates the proposed fusion strategy to perform multimodal material segmentation. MMSFormer achieves 52.05% mIoU outperforming the current state-of-the-art on Multimodal Material Segmentation (MCubeS) dataset. For instance, our method provides significant improvement in detecting gravel (+10.4%) and human (+9.1%) classes. Ablation studies show that different modules in the fusion block are crucial for overall model performance. Furthermore, our ablation studies also highlight the capacity of different input modalities to improve performance in the identification of different types of materials. Our code and pretrained models are publicly available for reference. 
 
 For more details, please check our [arXiv]() paper.
 
 ## Updates
-- [x] 08/2023, init repository.
-- [x] 08/2023, release the code for MMSFormer.
-- [x] 08/2023, release MMSFormer model weights. Download from [**GoogleDrive**](https://drive.google.com/drive/folders/1gYciyPj5VvE1AJcuYA8JGmWh61OF3asH?usp=sharing).
+- [x] 09/2023, init repository.
+- [x] 09/2023, release the code for MMSFormer.
+- [x] 09/2023, release MMSFormer model weights. Download from [**GoogleDrive**](https://drive.google.com/drive/folders/1gYciyPj5VvE1AJcuYA8JGmWh61OF3asH?usp=sharing).
 
 ## MMSFormer model
 
 <div align="center"> 
 
-![MMSFormer](figs/MMSFormer-Overall.png)
+![MMSFormer](figs/MMSFormer-Overall-2.png)
 **Figure:** Overall architecture of MMSFormer model.
 
 ![Fusion Block](figs/MMSFormer-Fusion.png)
@@ -45,7 +45,6 @@ First, create and activate the environment using the following commands:
 ```bash
 conda env create -f environment.yaml
 conda activate mmsformer
-# Optional: install apex follow: https://github.com/NVIDIA/apex
 ```
 
 ## Data preparation
@@ -85,7 +84,7 @@ checkpoints/pretrained/segformer
 └── mit_b4.pth
 ```
 
-To train MMSFormer model, please change the `configs/mcubes_rgbadn.yaml` file with appropriate path and hyper-parameters. 
+To train MMSFormer model, please change the `configs/mcubes_rgbadn.yaml` file with appropriate paths and hyper-parameters. 
 
 ```bash
 cd path/to/MMSFormer
@@ -127,6 +126,7 @@ This repository is under the Apache-2.0 license. For commercial use, please cont
 If you use MMSFormer model, please cite the following works:
 
 - **MMSFormer** [[**PDF**]()]
+*TBD*
 <!-- ```
 @article{zhang2023delivering,
   title={Delivering Arbitrary-Modal Semantic Segmentation},
@@ -137,7 +137,7 @@ If you use MMSFormer model, please cite the following works:
 ``` -->
 
 ## Acknowledgements
-Our codebase is based on the following Github repositories. Thanks for the public repositories:
+Our codebase is based on the following Github repositories. Thanks to the following public repositories:
 - [DELIVER](https://github.com/jamycheung/DELIVER)
 - [RGBX-semantic-segmentation](https://github.com/huaaaliu/RGBX_Semantic_Segmentation)
 - [Semantic-segmentation](https://github.com/sithu31296/semantic-segmentation)

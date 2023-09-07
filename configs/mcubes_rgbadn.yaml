@@ -49,7 +49,7 @@ SCHEDULER:
   
 
 EVAL:
-  MODEL_PATH    : 'output/MMSFormer/MMSFormer_MiT_B2_MCubeS_RGBNAD.pth'
+  MODEL_PATH    : 'output/MCubeS/MMSFormer_MiT_B2_MCubeS_RGBNAD.pth'
   IMAGE_SIZE    : [1024, 1024]    # evaluation image size in (h, w)                       
   BATCH_SIZE    : 2               # batch size used to train
   MSF: 
