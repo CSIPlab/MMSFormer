@@ -4,24 +4,23 @@
 
 </div>
 
-<!-- <p align="center">
-<a href="https://arxiv.org/pdf/2303.01480.pdf">
-    <img src="https://img.shields.io/badge/arXiv-2303.01480-red" /></a>
-<a href="https://jamycheung.github.io/DELIVER.html">
-    <img src="https://img.shields.io/badge/Project-page-green" /></a>
-<a href="https://www.youtube.com/watch?v=X-VeSLsEToA">
-    <img src="https://img.shields.io/badge/Video-YouTube-%23FF0000.svg" /></a>
-<a href="https://pytorch.org/">
-    <img src="https://img.shields.io/badge/Framework-PyTorch-orange.svg" /></a>
-<a href="https://github.com/jamycheung/DELIVER/blob/main/LICENSE">
-    <img src="https://img.shields.io/badge/License-Apache_2.0-blue.svg" /></a>
-</p> -->
+<p align="center">
+
+    [![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/multimodal-transformer-for-material/semantic-segmentation-on-mcubes)](https://paperswithcode.com/sota/semantic-segmentation-on-mcubes?p=multimodal-transformer-for-material)
+    
+    <a href="https://arxiv.org/pdf/2309.04001">
+        <img src="https://img.shields.io/badge/arXiv-2309.04001-red" />
+    </a>
+    <a href="https://pytorch.org/">
+        <img src="https://img.shields.io/badge/Framework-PyTorch-orange.svg" />
+    </a>
+</p>
 
 ## Introduction
 
 Leveraging information across diverse modalities is known to enhance performance on multimodal segmentation tasks. However, effectively fusing information from different modalities remains challenging due to the unique characteristics of each modality. In this paper, we propose a novel fusion strategy that can effectively fuse information from different combinations of four different modalities: RGB, Angle of Linear Polarization (AoLP), Degree of Linear Polarization (DoLP) and Near-Infrared (NIR). We also propose a new model named **M**ulti-**M**odal **S**egmentation Trans**Former** **(MMSFormer)** that incorporates the proposed fusion strategy to perform multimodal material segmentation. MMSFormer achieves 52.05% mIoU outperforming the current state-of-the-art on Multimodal Material Segmentation (MCubeS) dataset. For instance, our method provides significant improvement in detecting gravel (+10.4%) and human (+9.1%) classes. Ablation studies show that different modules in the fusion block are crucial for overall model performance. Furthermore, our ablation studies also highlight the capacity of different input modalities to improve performance in the identification of different types of materials. Our code and pretrained models are publicly available for reference. 
 
-For more details, please check our [arXiv]() paper.
+For more details, please check our [arXiv](https://arxiv.org/abs/2309.04001) paper.
 
 ## Updates
 - [x] 09/2023, init repository.
@@ -123,18 +122,19 @@ This repository is under the Apache-2.0 license. For commercial use, please cont
 
 ## Citations
 
-If you use MMSFormer model, please cite the following works:
+If you use MMSFormer model, please cite the following work:
 
-- **MMSFormer** [[**PDF**]()]
-*TBD*
-<!-- ```
-@article{zhang2023delivering,
-  title={Delivering Arbitrary-Modal Semantic Segmentation},
-  author={Zhang, Jiaming and Liu, Ruiping and Shi, Hao and Yang, Kailun and Reiß, Simon and Peng, Kunyu and Fu, Haodong and Wang, Kaiwei and Stiefelhagen, Rainer},
-  journal={arXiv preprint arXiv:2303.01480},
-  year={2023}
+- **MMSFormer** [[**arXiv**](https://arxiv.org/abs/2309.04001)]
+```
+@misc{reza2023multimodal,
+      title={Multimodal Transformer for Material Segmentation}, 
+      author={Md Kaykobad Reza and Ashley Prater-Bennette and M. Salman Asif},
+      year={2023},
+      eprint={2309.04001},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV}
 }
-``` -->
+```
 
 ## Acknowledgements
 Our codebase is based on the following Github repositories. Thanks to the following public repositories:
