@@ -1,6 +1,6 @@
 <div align="center"> 
 
-## MMSFormer: Multimodal Transformer for Material Segmentation
+## Multimodal Transformer for Material Segmentation
 
 </div>
 
