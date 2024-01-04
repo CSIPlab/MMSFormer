@@ -1,3 +1,5 @@
+> This repository is outdated. We will update it with latest codebase and model weights soon!
+
 <div align="center"> 
 
 ## Multimodal Transformer for Material Segmentation
