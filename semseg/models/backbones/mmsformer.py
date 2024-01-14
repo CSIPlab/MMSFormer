@@ -88,10 +88,11 @@ class MixFFN(nn.Module):
     def __init__(self, c1, c2):
         super().__init__()
         self.fc1 = nn.Linear(c1, c2)
+        self.pwconv1 = CustomPWConv(c2)
         self.dwconv3 = CustomDWConv(c2, 3)
         self.dwconv5 = CustomDWConv(c2, 5)
         self.dwconv7 = CustomDWConv(c2, 7)
-        self.pwconv = CustomPWConv(c2)
+        self.pwconv2 = CustomPWConv(c2)
         self.fc2 = nn.Linear(c2, c1)
 
         # Initialize fc1 layer with Kaiming initialization
@@ -100,10 +101,11 @@ class MixFFN(nn.Module):
         
     def forward(self, x: Tensor, H, W) -> Tensor:
         x = self.fc1(x)
+        x = self.pwconv1(x, H, W)
         x1 = self.dwconv3(x, H, W)
         x2 = self.dwconv5(x, H, W)
         x3 = self.dwconv7(x, H, W)
-        return self.fc2(F.gelu(self.pwconv(x + x1 + x2 + x3, H, W)))
+        return self.fc2(F.gelu(self.pwconv2(x + x1 + x2 + x3, H, W)))
 
 
 class FusionBlock(nn.Module):
@@ -258,7 +260,8 @@ class MixTransformer(nn.Module):
     def __init__(self, model_name: str = 'B0', modality: str = 'depth'):
         super().__init__()
         assert model_name in mit_settings.keys(), f"Model name should be in {list(cmnext_settings.keys())}"
-        self.model_name = 'B2'
+        # self.model_name = 'B2'
+        self.model_name = model_name
         # TODO: Must comment the following line later
         # self.model_name = 'B2' if modality == 'depth' else model_name
         embed_dims, depths = mit_settings[self.model_name] 
@@ -375,7 +378,7 @@ class MMSFormer(nn.Module):
         # Have extra modality
         if self.num_modals > 0:
             # Backbones and Fusion Block for extra modalities
-            self.extra_mit = nn.ModuleList([MixTransformer(model_name, self.modals[i]) for i in range(self.num_modals)])
+            self.extra_mit = nn.ModuleList([MixTransformer('B1', self.modals[i]) for i in range(self.num_modals)])
             self.fusion_block = FusionBlock(self.channels, reduction=16, num_modals=self.num_modals+1)
      
     def forward(self, x: list) -> list:

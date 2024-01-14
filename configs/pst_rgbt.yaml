@@ -2,31 +2,26 @@ DEVICE          : cuda                        # device used for training and eva
 SAVE_DIR        : 'output/MMSFormer'          # output folder name used for saving the model, logs and inference results
 GPUs            : 2
 GPU_IDs         : [0, 1]
-USE_WANDB       : False                       # Whether you want to use wandb
-WANDB_NAME      : 'MMSF-MCubeS-RGBNAD'        # name for the run
+USE_WANDB       : False
+WANDB_NAME      : 'MMSF-FMB-PST'             # name for the run
 
 MODEL:
   NAME          : MMSFormer                                         # name of the model you are using
   BACKBONE      : MMSFormer-B4                                      # model variant
   PRETRAINED    : 'checkpoints/pretrained/segformer/mit_b4.pth'     # backbone model's weight 
-  RESUME        : ''                                                # checkpoint file
+  RESUME        : ''
 
 DATASET:
-  NAME          : MCubeS                                            # dataset name to be trained with (camvid, cityscapes, ade20k)
+  NAME          : PST                                               # dataset name to be trained with (camvid, cityscapes, ade20k)
   ROOT          : 'PATH/TO/DATASET/ROOT'                            # dataset root path
   IGNORE_LABEL  : 255
-  # MODALS        : ['image']
-  # MODALS        : ['image', 'nir'] 
-  # MODALS        : ['image', 'aolp']
-  # MODALS        : ['image', 'dolp']
-  # MODALS        : ['image', 'aolp', 'nir']
-  # MODALS        : ['image', 'aolp', 'dolp']
-  MODALS        : ['image', 'nir', 'aolp', 'dolp']
+  # MODALS        : ['img']
+  MODALS        : ['img', 'thermal'] 
 
 TRAIN:
-  IMAGE_SIZE    : [512, 512]      # training image size in (h, w) === Fixed in dataloader, following MCubeSNet
-  BATCH_SIZE    : 4               # batch size used to train
-  EPOCHS        : 500             # number of epochs to train
+  IMAGE_SIZE    : [1280, 720]      # training image size in (h, w) === Fixed in dataloader, following MCubeSNet
+  BATCH_SIZE    : 2               # batch size used to train
+  EPOCHS        : 200             # number of epochs to train
   EVAL_START    : 0               # evaluation interval during training
   EVAL_INTERVAL : 1               # evaluation interval during training
   AMP           : true            # use AMP in training
@@ -50,7 +45,7 @@ SCHEDULER:
 
 EVAL:
   MODEL_PATH    : 'PATH/TO/MODEL/WEIGHT'                  # Path to your saved model
-  IMAGE_SIZE    : [1024, 1024]                            # evaluation image size in (h, w)                       
+  IMAGE_SIZE    : [1280, 720]                             # evaluation image size in (h, w)                       
   BATCH_SIZE    : 2                                       # batch size
   VIS_SAVE_DIR  : 'PATH/TO/TARGET/DIRECTORY'              # Where to save visualization
   MSF: 

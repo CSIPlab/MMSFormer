@@ -212,7 +212,7 @@ def main(cfg, save_dir):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('--cfg', type=str, default='configs/deliver_rgbdel.yaml', help='Configuration file to use')
+    parser.add_argument('--cfg', type=str, default='configs/mcubes_rgbadn.yaml', help='Configuration file to use')
     args = parser.parse_args()
 
     with open(args.cfg) as f:
@@ -226,7 +226,7 @@ if __name__ == '__main__':
     # exp_name = '_'.join([cfg['DATASET']['NAME'], model, modals])
     exp_name = cfg['WANDB_NAME']
     if cfg['USE_WANDB']:
-        wandb.init(project="MMSegFormer", entity="kaykobad", name=exp_name)
+        wandb.init(project="ProjcetName", entity="EntityName", name=exp_name)
 
     save_dir = Path(cfg['SAVE_DIR'], exp_name)
     if os.path.isfile(cfg['MODEL']['RESUME']):

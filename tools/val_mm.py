@@ -184,7 +184,7 @@ def main(cfg):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('--cfg', type=str, default='configs/DELIVER.yaml')
+    parser.add_argument('--cfg', type=str, default='configs/mcubes_rgbadn.yaml')
     args = parser.parse_args()
 
     with open(args.cfg) as f:
